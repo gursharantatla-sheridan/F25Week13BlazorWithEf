@@ -1,6 +1,7 @@
 using F25Week13BlazorWithEf.Components;
 using Microsoft.EntityFrameworkCore;
 using F25Week13BlazorWithEf.Data;
+using F25Week13BlazorWithEf.Services;
 
 namespace F25Week13BlazorWithEf
 {
@@ -17,6 +18,9 @@ namespace F25Week13BlazorWithEf
             // register the DbContext
             var connStr = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connStr));
+
+            // register the ProductService
+            builder.Services.AddScoped<ProductService>();
 
             var app = builder.Build();
 
